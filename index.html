@@ -631,13 +631,13 @@
             }
         }
     
-        async function readExcel(file) {
+       
+        async function readJSON(file) {
             const response = await fetch(file);
-            const arrayBuffer = await response.arrayBuffer();
-            const workbook = XLSX.read(arrayBuffer, { type: "array" });
-            const sheetName = workbook.SheetNames[0];
-            const sheet = workbook.Sheets[sheetName];
-            return XLSX.utils.sheet_to_json(sheet);
+            if (!response.ok) {
+                throw new Error('Erro ao carregar o arquivo JSON');
+            }
+            return response.json();
         }
     
         async function searchAddress() {
