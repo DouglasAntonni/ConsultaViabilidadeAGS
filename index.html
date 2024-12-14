@@ -602,8 +602,8 @@
                         allData = new Map(Object.entries(cachedData.data));
                     } else {
                         const [ihsData, vtalData] = await Promise.all([
-                            readExcel('IHS-PE.xlsx'),
-                            readExcel('VTAL-PE.xlsx')
+                            readExcel('./IHS-PE.xlsx'),
+                            readExcel('./VTAL-PE.xlsx')
                         ]);
                         
                         const processedData = [...ihsData, ...vtalData].reduce((map, item, index) => {
